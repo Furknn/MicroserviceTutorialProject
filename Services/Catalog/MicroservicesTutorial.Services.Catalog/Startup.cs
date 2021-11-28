@@ -1,7 +1,9 @@
-using AutoMapper.Configuration;
+using MicroservicesTutorial.Services.Catalog.Services;
+using MicroservicesTutorial.Services.Catalog.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
@@ -33,7 +35,7 @@ namespace MicroservicesTutorial.Services.Catalog
             //        });
             //    });
             //});
-//
+
             //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             //{
             //    options.Authority = Configuration["IdentityServerURL"];
@@ -41,24 +43,23 @@ namespace MicroservicesTutorial.Services.Catalog
             //    options.RequireHttpsMetadata = false;
             //});
 
-            //services.AddScoped<ICategoryService, CategoryService>();
-            //services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICourseService, CourseService>();
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers(opt =>
-            {
-                opt.Filters.Add(new AuthorizeFilter());
-            });
+            services.AddControllers(opt => { opt.Filters.Add(new AuthorizeFilter()); });
 
-            //services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
-//
-            //services.AddSingleton<IDatabaseSettings>(sp =>
-            //{
-            //    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
-            //});
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+
+            services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.Catalog", Version = "v1" });
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "FreeCourse.Services.Catalog",
+                        Version = "v1"
+                    });
             });
         }
 
@@ -76,10 +77,7 @@ namespace MicroservicesTutorial.Services.Catalog
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

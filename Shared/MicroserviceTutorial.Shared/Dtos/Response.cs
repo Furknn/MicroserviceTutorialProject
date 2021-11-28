@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace MicroserviceTutorial.Shared.Dtos
 {
-    public class ResponseDto<T>
+    public class Response<T>
     {
         public T Data { get; private set; }
         [JsonIgnore] public int StatusCode { get; private set; }
@@ -12,28 +12,28 @@ namespace MicroserviceTutorial.Shared.Dtos
         public List<string> Errors { get; private set; }
 
         //Static factory methods
-        public static ResponseDto<T> Success(T data, int stausCode)
+        public static Response<T> Success(T data, int statusCode)
         {
-            return new ResponseDto<T>()
+            return new Response<T>()
             {
                 Data = data,
-                StatusCode = stausCode,
+                StatusCode = statusCode,
                 IsSuccessful = true
             };
         }
 
-        public static ResponseDto<T> Success(int statusCode)
+        public static Response<T> Success(int statusCode)
         {
-            return new ResponseDto<T>()
+            return new Response<T>()
             {
                 IsSuccessful = true,
                 StatusCode = statusCode
             };
         }
 
-        public static ResponseDto<T> Fail(List<string> errors, int statusCode)
+        public static Response<T> Fail(List<string> errors, int statusCode)
         {
-            return new ResponseDto<T>()
+            return new Response<T>()
             {
                 Errors = errors,
                 StatusCode = statusCode,
@@ -41,9 +41,9 @@ namespace MicroserviceTutorial.Shared.Dtos
             };
         }
 
-        public static ResponseDto<T> Fail(string error, int statusCode)
+        public static Response<T> Fail(string error, int statusCode)
         {
-            return new ResponseDto<T>()
+            return new Response<T>()
             {
                 Errors = new List<string>()
                 {
