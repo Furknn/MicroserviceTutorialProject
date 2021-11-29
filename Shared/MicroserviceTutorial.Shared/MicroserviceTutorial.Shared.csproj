@@ -6,5 +6,8 @@
         <LangVersion>10</LangVersion>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
-
+    
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
 </Project>

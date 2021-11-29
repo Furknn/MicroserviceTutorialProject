@@ -2,7 +2,7 @@ using System;
 
 namespace MicroservicesTutorial.Services.Catalog.Dtos
 {
-    internal class CourseDto
+    public class CourseDto
     {
         public string Id { get; set; }
 

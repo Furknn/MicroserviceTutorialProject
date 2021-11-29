@@ -57,7 +57,7 @@ namespace MicroservicesTutorial.Services.Catalog
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "FreeCourse.Services.Catalog",
+                        Title = "MicroservicesTutorial.Services.Catalog",
                         Version = "v1"
                     });
             });
@@ -70,7 +70,7 @@ namespace MicroservicesTutorial.Services.Catalog
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FreeCourse.Services.Catalog v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MicroservicesTutorial.Services.Catalog v1"));
             }
 
             app.UseRouting();
