@@ -6,7 +6,7 @@ using AutoMapper;
 using MicroservicesTutorial.Services.Catalog.Dtos;
 using MicroservicesTutorial.Services.Catalog.Models;
 using MicroservicesTutorial.Services.Catalog.Settings;
-using MicroserviceTutorial.Shared.Dtos;
+using MicroservicesTutorial.Shared.Dtos;
 using MongoDB.Driver;
 
 namespace MicroservicesTutorial.Services.Catalog.Services

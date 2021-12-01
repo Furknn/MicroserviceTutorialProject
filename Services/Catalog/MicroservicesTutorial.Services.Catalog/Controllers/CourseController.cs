@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using MicroservicesTutorial.Services.Catalog.Dtos;
 using MicroservicesTutorial.Services.Catalog.Services;
-using MicroserviceTutorial.Shared.ControllerBases;
+using MicroservicesTutorial.Shared.ControllerBases;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

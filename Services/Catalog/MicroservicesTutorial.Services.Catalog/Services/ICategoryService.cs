@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MicroservicesTutorial.Services.Catalog.Dtos;
 using MicroservicesTutorial.Services.Catalog.Models;
-using MicroserviceTutorial.Shared.Dtos;
+using MicroservicesTutorial.Shared.Dtos;
 
 namespace MicroservicesTutorial.Services.Catalog.Services
 {
